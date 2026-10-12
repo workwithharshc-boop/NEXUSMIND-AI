@@ -1,0 +1,333 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUSMIND AI | Think Beyond</title>
+<meta name="description" content="NEXUSMIND AI — an intelligent assistant for reasoning, research and problem-solving.">
+
+<style>
+:root {
+  --bg: #080a14;
+  --violet: #8b7bff;
+  --cyan: #65e7f5;
+  --text: #f5f6ff;
+  --muted: #aeb5cc;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, Arial, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 12% 18%, #5428a844, transparent 42%),
+    radial-gradient(ellipse at 88% 65%, #007f9980, transparent 38%),
+    radial-gradient(ellipse at 52% 100%, #36216b55, transparent 45%),
+    var(--bg);
+}
+
+.ambient::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: repeating-linear-gradient(
+    0deg, transparent 0 54px, #9f9bff0c 55px 56px
+  ), repeating-linear-gradient(
+    90deg, transparent 0 54px, #9f9bff0c 55px 56px
+  );
+  transform: perspective(500px) rotateX(12deg);
+  animation: drift 30s linear infinite;
+}
+
+.orb {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: .22;
+  animation: float 12s ease-in-out infinite alternate;
+}
+
+.orb.one { background: #795bff; top: 15%; left: -100px; }
+.orb.two { background: #00d9ee; right: -100px; top: 55%; animation-delay: -5s; }
+
+@keyframes drift {
+  to { background-position: 0 110px, 110px 0; }
+}
+@keyframes float {
+  to { transform: translate(50px, -40px) scale(1.2); }
+}
+
+nav {
+  min-height: 78px;
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #ffffff16;
+  background: #080a1488;
+  backdrop-filter: blur(16px);
+  position: relative;
+}
+
+.brand {
+  color: white;
+  font-size: 19px;
+  font-weight: 850;
+  letter-spacing: 2px;
+}
+.brand span { color: var(--cyan); }
+
+.status {
+  font-size: 12px;
+  color: #7af5c7;
+  border: 1px solid #7af5c755;
+  padding: 9px 13px;
+  border-radius: 30px;
+  background: #7af5c70c;
+}
+
+main {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+.hero {
+  min-height: 570px;
+  padding: 105px 0 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #c3baff;
+  border: 1px solid #9583ff55;
+  background: #8b7bff12;
+  padding: 10px 16px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: appear .8s ease both;
+}
+
+h1 {
+  font-size: clamp(46px, 8vw, 88px);
+  line-height: 1.05;
+  letter-spacing: -3.5px;
+  margin: 30px 0 24px;
+  animation: appear .9s .1s ease both;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #b4a5ff, #76e8f5, #c1b6ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine { to { background-position: 200% center; } }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.intro {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.85;
+  max-width: 690px;
+  animation: appear 1s .2s ease both;
+}
+
+.cta {
+  display: inline-flex;
+  margin-top: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 23px;
+  border-radius: 12px;
+  color: #080a14;
+  background: linear-gradient(100deg, #b3a4ff, #73e7f4);
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 0 35px #8b7bff26;
+  transition: transform .2s, box-shadow .2s;
+}
+.cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 45px #65e7f544;
+}
+
+.section-label {
+  text-align: center;
+  color: #9ca4c0;
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 0 0 90px;
+}
+
+.card {
+  padding: 28px 24px;
+  border: 1px solid #ffffff18;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #ffffff10, #ffffff03);
+  backdrop-filter: blur(15px);
+  transition: transform .25s, border-color .25s, background .25s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #8b7bff88;
+  background: linear-gradient(145deg, #8b7bff16, #65e7f509);
+}
+
+.card-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #8b7bff55;
+  border-radius: 14px;
+  color: var(--cyan);
+  background: #8b7bff13;
+  font-size: 23px;
+}
+
+.card h2 { font-size: 17px; margin: 21px 0 10px; }
+.card p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+
+.chat-callout {
+  margin: 0 auto 80px;
+  max-width: 760px;
+  text-align: center;
+  border: 1px solid #65e7f533;
+  border-radius: 22px;
+  padding: 35px 24px;
+  background: linear-gradient(110deg, #8b7bff10, #65e7f50c);
+}
+
+.chat-callout h2 { font-size: clamp(23px, 4vw, 34px); margin-bottom: 12px; }
+.chat-callout p { color: var(--muted); line-height: 1.8; }
+
+footer {
+  text-align: center;
+  border-top: 1px solid #ffffff16;
+  padding: 26px 16px 90px;
+  color: #838ba6;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+  nav { padding: 17px 5%; }
+  .brand { font-size: 15px; letter-spacing: 1px; }
+  .status { font-size: 10px; padding: 8px 9px; }
+  .hero { min-height: auto; padding: 85px 0 70px; }
+  h1 { letter-spacing: -1.8px; }
+  .intro { font-size: 15px; }
+  .features { grid-template-columns: 1fr; padding-bottom: 60px; }
+  .card { padding: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="ambient" aria-hidden="true">
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+</div>
+
+<nav>
+  <div class="brand">NEXUS<span>MIND</span> AI</div>
+  <div class="status">● AI ASSISTANT</div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">YOUR INTELLIGENCE, AMPLIFIED</div>
+    <h1>Think Beyond.<br><span class="gradient">Solve Smarter.</span></h1>
+    <p class="intro">
+      Meet NEXUSMIND AI — your intelligent companion for reasoning,
+      knowledge discovery, research, and structured problem-solving.
+      Ask questions, explore ideas, and discover new possibilities.
+    </p>
+    <a class="cta" href="#explore">Explore NEXUSMIND <span>↗</span></a>
+  </section>
+
+  <p class="section-label" id="explore">BUILT FOR CURIOUS MINDS</p>
+
+  <section class="features">
+    <article class="card">
+      <div class="card-icon">✧</div>
+      <h2>Deep Reasoning</h2>
+      <p>Explore problems step by step and make complicated ideas easier to understand.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">⌘</div>
+      <h2>Knowledge Discovery</h2>
+      <p>Investigate questions, organize information, and learn from available knowledge.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">⟡</div>
+      <h2>Smart Problem Solving</h2>
+      <p>Turn challenges into clear steps, practical options, and useful next actions.</p>
+    </article>
+  </section>
+
+  <section class="chat-callout">
+    <h2>Have a question? Let's explore it.</h2>
+    <p>
+      Open the chat bubble in the bottom-right corner to start a conversation
+      with NEXUSMIND AI.
+    </p>
+  </section>
+</main>
+
+<footer>
+  NEXUSMIND AI · Student innovation project<br>
+  An experimental AI assistant. Verify important information independently.
+</footer>
+
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/10/12/11/20261012114201-MLO8Y4N7.js" defer></script>
+</body>
+</html>
+```
